@@ -43,6 +43,20 @@ services:
       - "33066:3306"
     networks:
       - lempdev
+  redis:
+    build:
+      context: .
+      dockerfile: ./docker/images/redis/Dockerfile.dev
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
+    volumes:
+      - type: bind
+        source: ./docker/data/redis
+        target: /data
+    networks:
+      - lempdev
 
 networks:
   lempdev:

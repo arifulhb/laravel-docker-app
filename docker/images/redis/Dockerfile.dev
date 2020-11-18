@@ -1,0 +1,4 @@
+FROM redis:5.0.10
+
+COPY ./docker/config/redis/redis-dev.conf /etc/redis/redis.conf
+
