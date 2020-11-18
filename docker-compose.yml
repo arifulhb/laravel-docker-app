@@ -58,5 +58,21 @@ services:
     networks:
       - lempdev
 
+  queue:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./docker/images/app/Dockerfile.dev
+    command: ["/usr/local/bin/php", "/var/www/app/artisan", "queue:work"]
+    volumes:
+      - type: bind
+        source: ./app
+        target: /var/www/app
+    depends_on:
+      - app
+      - redis
+    networks:
+      - lempdev
+
 networks:
   lempdev:
