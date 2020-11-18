@@ -8,6 +8,8 @@ services:
       - type: bind
         source: ./app
         target: /var/www/app
+    expose:
+      - "9000"
     networks:
       - lempdev
   nginx:
