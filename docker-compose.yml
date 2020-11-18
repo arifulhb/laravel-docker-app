@@ -39,6 +39,11 @@ services:
       - type: bind
         source: ./docker/data/mysql
         target: /var/lib/mysql
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: secret
     ports:
       - "33066:3306"
     networks:
