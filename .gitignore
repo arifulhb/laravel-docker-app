@@ -1,6 +1,2 @@
 ./idea/
 app/
-docker/data/app/
-docker/data/mysql/
-docker/data/redis/
-docker/data/web/

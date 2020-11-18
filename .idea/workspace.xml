@@ -2,33 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d968b0bb-4e98-4b06-96b4-bd436426d45b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/docker.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose-prod.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/config/php/php-ini-development.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/config/php/php-ini-production.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/database/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/database/Dockerfile.dev" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/queue/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/queue/Dockerfile.dev" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/redis/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/redis/Dockerfile.dev" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/scheduler/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/scheduler/Dockerfile.dev" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/web/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/web/Dockerfile.dev" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/web/conf.d/default.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/web/nginx.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/web/nginx.dev.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/web/sites/default.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/images/web/sites/default.dev.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/install" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker/data/mysql/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/docker/images/database" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docker/data/app" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,11 +43,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docker/data/app" />
+      <recent name="$PROJECT_DIR$/docker/data/web" />
+      <recent name="$PROJECT_DIR$/docker/data/redis" />
       <recent name="$PROJECT_DIR$/docker/images/database" />
       <recent name="$PROJECT_DIR$/docker/images/web" />
-      <recent name="$PROJECT_DIR$/docker/config/php" />
-      <recent name="$PROJECT_DIR$/docker/images/scheduler" />
-      <recent name="$PROJECT_DIR$/docker/images/redis" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
