@@ -1,0 +1,46 @@
+version: '3.6'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/images/app/Dockerfile.dev
+    volumes:
+      - type: bind
+        source: ./app
+        target: /var/www/app
+    networks:
+      - lempdev
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/images/web/Dockerfile.dev
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - type: bind
+        source: ./app
+        target: /var/www/app
+      - type: bind
+        source: ./docker/data/web
+        target: /var/log/nginx
+    depends_on:
+      - app
+    networks:
+      - lempdev
+  mysql:
+    build:
+      context: .
+      dockerfile: ./docker/images/database/Dockerfile.dev
+    restart: always
+    volumes:
+      - type: bind
+        source: ./docker/data/mysql
+        target: /var/lib/mysql
+    ports:
+      - "33066:3306"
+    networks:
+      - lempdev
+
+networks:
+  lempdev:

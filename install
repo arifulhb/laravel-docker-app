@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo 'Welcome to LEMP-DOCK!\n'
+echo 'Downloading Laravel...\n'
+wget -P download https://github.com/laravel/laravel/archive/v8.4.2.zip -O laravel.zip
+
+echo 'Unpacking Laravel\n'
+unzip laravel.zip -d ./
+mv 'laravel-8.4.2' 'app'
+cp app/.env.example app/.env
+rm laravel.zip ./path/file
+echo 'Complete \n'
