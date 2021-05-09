@@ -2,12 +2,15 @@
 
 echo 'Welcome to LEMP-DOCK!\n'
 echo 'Downloading Laravel...\n'
+# UPDATE LARAVEL VERSION HERE
 wget -P download https://github.com/laravel/laravel/archive/v8.4.2.zip -O laravel.zip
 
 echo 'Unpacking Laravel\n'
 unzip laravel.zip -d ./
+# update laravel version here to remove the right directory.
 mv 'laravel-8.4.2' 'app'
 cp app/.env.example app/.env
 rm laravel.zip ./path/file
+# update laravel version here to remove the right directory.
 rm -rf app/laravel-8.4.2
 echo 'Complete \n'
