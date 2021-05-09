@@ -84,36 +84,9 @@ services:
       - lempdev
   scheduler:
     restart: always
-#    env_file:
-#      - ./app/.env
-#    environment:
-#      - DB_CONNECTION=${DB_CONNECTION}
-#      - DB_HOST=${DB_HOST}
-#      - DB_DATABASE=${DB_DATABASE}
-#      - DB_USERNAME=${DB_USERNAME}
-#      - DB_PASSWORD=${DB_PASSWORD}
-#      - MAIL_MAILER=${MAIL_MAILER}
-#      - MAIL_HOST=${MAIL_HOST}
-#      - MAIL_PORT=${MAIL_PORT}
-#      - MAIL_USERNAME=${MAIL_USERNAME}
-#      - MAIL_PASSWORD=${MAIL_PASSWORD}
-#      - MAIL_FROM_ADDRESS=${MAIL_FROM_ADDRESS}
-#      - MAIL_FROM_NAME=${MAIL_FROM_NAME}
     build:
       context: .
       dockerfile: ./docker/images/scheduler/Dockerfile.dev
-#      args:
-#        - DB_HOST=mysql
-#        - DB_DATABASE=app
-#        - DB_USERNAME=admin
-#        - DB_PASSWORD=secret
-#        - MAIL_MAILER=smtp
-#        - MAIL_HOST=${MAIL_HOST}
-#        - MAIL_PORT=${MAIL_PORT}
-#        - MAIL_USERNAME=${MAIL_USERNAME}
-#        - MAIL_PASSWORD=${MAIL_PASSWORD}
-#        - MAIL_FROM_ADDRESS=${MAIL_FROM_ADDRESS}
-#        - MAIL_FROM_NAME=${MAIL_FROM_NAME}
     depends_on:
       - app
       - mysql
