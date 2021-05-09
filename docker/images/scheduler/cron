@@ -1,0 +1,1 @@
+* * * * * sh /var/www/execute-cron.sh >> /var/log/cron.log 2>&1

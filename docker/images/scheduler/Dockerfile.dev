@@ -1,0 +1,95 @@
+FROM php:7.3.24-fpm-alpine3.12
+
+COPY ./docker/config/php/php-ini-development.ini /usr/local/etc/php/conf.d/php.ini
+
+COPY ./docker/images/scheduler/cron /etc/cron.daily/cron
+COPY ./docker/images/scheduler/execute-cron.sh /var/www/execute-cron.sh
+COPY ./docker/images/scheduler/entry.sh /entry.sh
+
+# ${} DB & MAI#L
+#ARG DB_CONNECTION
+#ARG DB_HOST
+#ARG DB_DATABASE
+#ARG DB_USERNAME
+#ARG DB_PASSWORD
+#ARG MAIL_DRIVER
+#ARG MAIL_HOST
+#ARG MAIL_PORT
+#ARG MAIL_USERNAME
+#ARG MAIL_PASSWORD
+#ARG MAIL_FROM_ADDRESS
+#ARG MAIL_FROM_NAME
+##RUN echo "DB_CONNECTION: " $DB_CONNECTION
+#
+#
+#ENV DB_CONNECTION ${DB_CONNECTION}
+#ENV DB_HOST ${DB_HOST}
+#ENV DB_DATABASE ${DB_DATABASE}
+#ENV DB_USERNAME ${DB_USERNAME}
+#ENV DB_PASSWORD ${DB_PASSWORD}
+#ENV MAIL_MAILER ${MAIL_MAILER}
+#ENV MAIL_HOST ${MAIL_HOST}
+#ENV MAIL_PORT ${MAIL_PORT}
+#ENV MAIL_USERNAME ${MAIL_USERNAME}
+#ENV MAIL_PASSWORD ${MAIL_PASSWORD}
+#ENV MAIL_FROM_ADDRESS ${MAIL_FROM_ADDRESS}
+#ENV MAIL_FROM_NAME ${MAIL_FROM_NAME}
+#
+#RUN printenv | grep DB_
+#RUN printenv | grep MAIL_
+
+# Work Directory
+WORKDIR /var/www/app
+
+# Install Nodejs
+RUN apk update \
+    &&  apk add --no-cache --virtual buildDeps autoconf nodejs \
+    &&  apk del buildDeps
+
+# Install packages
+RUN apk update && apk add --no-cache --virtual buildDeps autoconf \
+        wget \
+        curl \
+        bash \
+        redis \
+        mysql-client \
+        imagemagick \
+        libmcrypt-dev build-base gnupg \
+        bash alpine-sdk \
+    &&  apk del buildDeps
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.17
+
+RUN apk update && apk add --no-cache --virtual buildDeps autoconf \
+    &&  docker-php-ext-install \
+        pcntl \
+        exif \
+        mysqli \
+        pdo_mysql \
+        opcache \
+    &&  apk del buildDeps
+
+# https://github.com/mlocati/docker-php-extension-installer
+ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/install-php-extensions \
+    && sync \
+    && install-php-extensions \
+        gd intl zip bz2 calendar gmagick \
+        memcache memcached redis \
+        bcmath gmp uuid \
+        mongodb pcov \
+        uopz soap
+
+# Add user for laravel application
+RUN addgroup -S www && adduser -S -G www www \
+    && chown -R www-data:www-data /var/www/app \
+    && chmod -R 755 /var/www/app
+
+RUN chmod 0644 /etc/cron.daily/cron \
+    && crontab /etc/cron.daily/cron \
+    && touch /var/log/cron.log \
+    && touch /etc/crontab /etc/cron.*/* \
+    && chmod +x /var/www/execute-cron.sh
+

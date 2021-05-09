@@ -9,4 +9,5 @@ unzip laravel.zip -d ./
 mv 'laravel-8.4.2' 'app'
 cp app/.env.example app/.env
 rm laravel.zip ./path/file
+rm -rf app/laravel-8.4.2
 echo 'Complete \n'
