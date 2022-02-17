@@ -1,4 +1,4 @@
-FROM php:7.3.24-fpm-alpine3.12
+FROM --platform=linux/x86_64 php:7.3.24-fpm-alpine3.12
 
 COPY ./docker/config/php/php-ini-development.ini /usr/local/etc/php/conf.d/php.ini
 

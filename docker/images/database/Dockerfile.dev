@@ -1,4 +1,4 @@
-FROM mysql:5.7
+FROM --platform=linux/x86_64 mysql:5.7
 
 ENV MYSQL_ALLOW_EMPTY_PASSWORD=true
 
