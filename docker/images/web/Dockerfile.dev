@@ -1,4 +1,4 @@
-FROM nginx:1.19.4
+FROM --platform=linux/x86_64 nginx:1.19.4
 
 CMD ["nginx"]
 
